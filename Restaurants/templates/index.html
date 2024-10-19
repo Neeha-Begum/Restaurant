@@ -1,0 +1,23 @@
+<h1>This is the list of food items in a Restaurant</h1>
+<hr>
+<form method="POST">{% csrf_token %}
+    <label for="n1">Dish Name</label>
+    <input name="dish_name", type="text",id=n1, placeholder="Enter dish">
+    <button>Submit</button>
+    {% if res is None %}
+        <h3>Please enter a value</h3>
+    {% elif res %}
+        {% for i in res %}
+            <h3>{{ i.dish_name }} and the price is {{ i.price }}</h3>
+            <h3>The food is : {{ i.dish_name }} and the price is {{ i.price }}</h3>
+        {% endfor %}
+    {% else %}
+        <h2>Given item is not found</h2>
+    {% endif %}   
+    <table>
+        <tr>
+            <td>dish_name</td>
+            </td>
+        </tr>
+    </table> 
+</form>
